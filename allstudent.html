@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Students</title>
+</head>
+<body>
+    <div id="userList"></div>
+    <script>
+        async function fetchUsers() {
+            const response = await fetch('/');
+            const users = await response.json();
+            const userList = document.getElementById('userList');
+            userList.innerHTML = users.map(user => 
+                `<div>Name: ${user.name}, Email: ${user.email}</div>`
+            ).join('');
+        }
+        fetchUsers();
+    </script>
+</body>
+</html>
